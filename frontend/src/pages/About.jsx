@@ -1,5 +1,5 @@
 import PremiumCard from '../components/PremiumCard';
-import { Github, Mail, Code, Database, BrainCircuit, LayoutTemplate } from 'lucide-react';
+import { GitBranch, Mail, Code, Database, BrainCircuit, LayoutTemplate } from 'lucide-react';
 
 export default function About() {
   const techStack = [
@@ -58,7 +58,7 @@ export default function About() {
               className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50 transition-colors group"
             >
               <div className="bg-gray-900 p-2.5 rounded-lg group-hover:scale-105 transition-transform">
-                <Github className="w-6 h-6 text-white" />
+                <GitBranch className="w-6 h-6 text-white" />
               </div>
               <div>
                 <p className="text-sm font-bold text-gray-900">GitHub Repository</p>
