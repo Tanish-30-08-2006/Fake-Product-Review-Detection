@@ -1,3 +1,7 @@
+import PremiumCard from '../components/PremiumCard';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Activity, Trophy, TrendingUp, CheckCircle } from 'lucide-react';
+
 const staticModels = [
   {"name": "ZeroR (Baseline)", "accuracy": 0.521127, "precision": 0.521127, "recall": 1.000000, "f1": 0.685185, "roc": 0.500000},
   {"name": "Logistic Regression", "accuracy": 0.839034, "precision": 0.850980, "recall": 0.837838, "f1": 0.844358, "roc": 0.915399},
