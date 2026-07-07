@@ -1,26 +1,16 @@
-import { useEffect, useState } from 'react';
-import PremiumCard from '../components/PremiumCard';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Activity, Trophy, TrendingUp, CheckCircle } from 'lucide-react';
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const staticModels = [
+  {"name": "ZeroR (Baseline)", "accuracy": 0.521127, "precision": 0.521127, "recall": 1.000000, "f1": 0.685185, "roc": 0.500000},
+  {"name": "Logistic Regression", "accuracy": 0.839034, "precision": 0.850980, "recall": 0.837838, "f1": 0.844358, "roc": 0.915399},
+  {"name": "Support Vector Machine", "accuracy": 0.798793, "precision": 0.780919, "recall": 0.853282, "f1": 0.815498, "roc": 0.894552},
+  {"name": "Gaussian Naive Bayes", "accuracy": 0.736419, "precision": 0.670213, "recall": 0.972973, "f1": 0.793701, "roc": 0.863526},
+  {"name": "Decision Tree", "accuracy": 0.784708, "precision": 0.806452, "recall": 0.772201, "f1": 0.788955, "roc": 0.785260},
+  {"name": "Random Forest", "accuracy": 0.867203, "precision": 0.840989, "recall": 0.918919, "f1": 0.878229, "roc": 0.932870},
+  {"name": "Gradient Boosting", "accuracy": 0.853119, "precision": 0.825175, "recall": 0.911197, "f1": 0.866055, "roc": 0.933057},
+  {"name": "k-Nearest Neighbors", "accuracy": 0.794769, "precision": 0.783394, "recall": 0.837838, "f1": 0.809701, "roc": 0.840734}
+];
 
 export default function ModelPerformance() {
-  const [models, setModels] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch(`${API_URL}/model-info`)
-      .then(res => res.json())
-      .then(data => {
-        setModels(data.models || []);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to fetch model info", err);
-        setLoading(false);
-      });
-  }, []);
+  const models = staticModels;
 
   // Mock ROC data for visualization (to make it look premium)
   const rocData = [
@@ -123,28 +113,22 @@ export default function ModelPerformance() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
-              {loading ? (
-                <tr>
-                  <td colSpan="6" className="py-12 text-center text-gray-400">Loading metrics...</td>
-                </tr>
-              ) : (
-                models.map((model, idx) => {
-                  const isWinner = model.name === 'Gradient Boosting';
-                  return (
-                    <tr key={idx} className={clsx("transition-colors", isWinner ? "bg-orangeFarm-50/50" : "hover:bg-gray-50")}>
-                      <td className="py-4 px-4 text-sm font-medium text-gray-900 flex items-center gap-2">
-                        {isWinner && <Trophy className="w-4 h-4 text-orangeFarm-500" />}
-                        {model.name}
-                      </td>
-                      <td className="py-4 px-4 text-sm text-gray-600">{(model.accuracy).toFixed(6)}</td>
-                      <td className="py-4 px-4 text-sm text-gray-600">{(model.precision).toFixed(6)}</td>
-                      <td className="py-4 px-4 text-sm text-gray-600">{(model.recall).toFixed(6)}</td>
-                      <td className="py-4 px-4 text-sm font-semibold text-gray-900">{(model.f1).toFixed(6)}</td>
-                      <td className="py-4 px-4 text-sm text-gray-600">{(model.roc).toFixed(6)}</td>
-                    </tr>
-                  )
-                })
-              )}
+              {models.map((model, idx) => {
+                const isWinner = model.name === 'Gradient Boosting';
+                return (
+                  <tr key={idx} className={`transition-colors ${isWinner ? "bg-orangeFarm-50/50" : "hover:bg-gray-50"}`}>
+                    <td className="py-4 px-4 text-sm font-medium text-gray-900 flex items-center gap-2">
+                      {isWinner && <Trophy className="w-4 h-4 text-orangeFarm-500" />}
+                      {model.name}
+                    </td>
+                    <td className="py-4 px-4 text-sm text-gray-600">{(model.accuracy).toFixed(6)}</td>
+                    <td className="py-4 px-4 text-sm text-gray-600">{(model.precision).toFixed(6)}</td>
+                    <td className="py-4 px-4 text-sm text-gray-600">{(model.recall).toFixed(6)}</td>
+                    <td className="py-4 px-4 text-sm font-semibold text-gray-900">{(model.f1).toFixed(6)}</td>
+                    <td className="py-4 px-4 text-sm text-gray-600">{(model.roc).toFixed(6)}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
