@@ -124,9 +124,20 @@ graph TD
 ---
 
 ## 9. Feature Engineering
-We engineered composite features to capture manipulation:
-- **`sentiment_variance`:** Measures the deviation of the review's sentiment from the product's historical average sentiment. (Fake reviews often deviate sharply).
-- **`first_reviews_count`:** Flags users whose primary activity consists of leaving the *first* review on a new product (a common behavior in review farms).
+We engineered multiple composite features specifically designed to capture non-linguistic manipulation signals:
+
+**Text Characteristics:**
+- **`char_count`**: Total length of the review string.
+- **`word_count`**: Total number of words.
+- **`avg_word_length`**: `char_count` / `word_count`. Captures overly simplistic bot language versus detailed human reviews.
+
+**Metadata & Binary Flags:**
+- **`has_friends`**: Binary flag (1 if `friendCount` > 0). Bot farmers rarely spend resources simulating social networks. A lack of friends is a strong anomaly signal.
+- **`has_useful_votes`**: Binary flag (1 if `usefulCount` > 0). Real users naturally accumulate helpful votes over time, while hit-and-run accounts do not.
+
+**Behavioral & Burst Detection:**
+- **`sentiment_variance`**: The mathematical deviation of a review's sentiment from the product's historical average sentiment. (e.g., A restaurant has genuine 1-star reviews from locals, but the owner buys fake 5-star reviews to drag the average up. This creates massive variance).
+- **`first_reviews_count`**: Flags users whose primary activity consists of leaving the *first* review on a new product, a very common behavioral footprint for organized review farms.
 
 ---
 
@@ -155,9 +166,14 @@ The **Gradient Boosting Classifier** was selected as our Champion Model. It hand
 
 | Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC |
 |-------|----------|-----------|--------|----------|---------|
-| Gradient Boosting | 85.31% | 82.51% | 91.11% | 86.60% | 93.30% |
+| **Gradient Boosting** | **85.31%** | **82.51%** | **91.11%** | **86.60%** | **93.30%** |
 | Random Forest | 86.72% | 84.09% | 91.89% | 87.82% | 93.28% |
 | Logistic Regression | 83.90% | 85.09% | 83.78% | 84.43% | 91.53% |
+| Support Vector Machine | 79.87% | 78.09% | 85.32% | 81.54% | 89.45% |
+| k-Nearest Neighbors | 79.47% | 78.33% | 83.78% | 80.97% | 84.07% |
+| Decision Tree | 78.47% | 80.64% | 77.22% | 78.89% | 78.52% |
+| Gaussian Naive Bayes | 73.64% | 67.02% | 97.29% | 79.37% | 86.35% |
+| ZeroR (Baseline) | 52.11% | 52.11% | 100.00%| 68.51% | 50.00% |
 
 *Gradient Boosting was ultimately deployed due to its superior ROC-AUC score (93.3%), indicating better class separation.*
 
