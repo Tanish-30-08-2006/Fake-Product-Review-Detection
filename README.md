@@ -1,3 +1,6 @@
+
+
+
 # Fake Product Review Detection System 🛡️
 
 A comprehensive Full-Stack Machine Learning solution to detect suspicious product reviews by analyzing text semantics, behavioral patterns, and metadata. Built for the Data Science Hackathon.
@@ -43,7 +46,8 @@ A comprehensive Full-Stack Machine Learning solution to detect suspicious produc
 ### 🎥 Video Demonstration
 Check out the full workflow (Dashboard, Model Performance, and SHAP Explainability) in the demonstration video below:
 
-[▶️ Watch Application Demo (Local File)](images-recordings/app_%20demo.mp4)
+
+https://github.com/user-attachments/assets/21b475a3-1184-4df8-ad22-8a94940cbbe8
 
 ### 📸 Application Snapshots
 <details>
