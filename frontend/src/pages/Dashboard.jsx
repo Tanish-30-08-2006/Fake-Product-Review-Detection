@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 
 import { Loader2, ShieldCheck, ShieldAlert, Activity } from 'lucide-react';
 import clsx from 'clsx';
 
-const API_URL = 'http://localhost:8000'; // Hardcoded for dev, should be env var
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(false);

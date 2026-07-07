@@ -3,7 +3,7 @@ import PremiumCard from '../components/PremiumCard';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Activity, Trophy, TrendingUp, CheckCircle } from 'lucide-react';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 export default function ModelPerformance() {
   const [models, setModels] = useState([]);
