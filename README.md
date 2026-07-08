@@ -183,12 +183,18 @@ The **Gradient Boosting Classifier** was selected as our Champion Model. It hand
 
 ### Model Performance Visualizations
 
-**ROC-AUC Curves**
+**ROC-AUC Curves**  
 The ROC curves illustrate the diagnostic ability of all evaluated models. Gradient Boosting and Random Forest show the highest Area Under Curve, demonstrating their superior ability to separate genuine from fake reviews across various thresholds.
+
+<br>
 <img src="images-recordings/figures/auc_curve_all_models.png" alt="ROC AUC Curves" width="75%">
 
-**Confusion Matrices**
+<br>
+
+**Confusion Matrices**  
 The confusion matrices display the true positive and false positive rates for each algorithm. Notice how the ensemble models (Random Forest, Gradient Boosting) minimize False Positives (incorrectly flagging genuine reviews) while maintaining high Recall for fake reviews.
+
+<br>
 <img src="images-recordings/figures/confusion_matrices_all_models.png" alt="Confusion Matrices" width="75%">
 
 ---
@@ -200,12 +206,28 @@ Because Trust & Safety teams need to understand *why* a review is flagged, we in
 
 ### SHAP Feature Importance & Interpretability
 
-**SHAP Summary Plot**
+**SHAP Summary Plot**  
 This summary plot displays the most impactful features across the dataset. Behavioral features (like `review_velocity`) and metadata flags (like `has_friends`) often dominate the decision process over raw text metrics.
+
+<br>
 <img src="images-recordings/figures/shap_feature_importance.png" alt="SHAP Feature Importance" width="75%">
+
+<br>
+
+**SHAP Importance Scores**  
+A detailed breakdown showing how specific feature values positively or negatively influence the model's probability of flagging a review as fake.
+
+<br>
+<img src="images-recordings/figures/shap_importance_scores.png" alt="SHAP Importance Scores" width="75%">
+
+<br>
+
 ### Reviewer Behavioral Analysis
-**Coordinated Review Ring Visualization**
+
+**Coordinated Review Ring Visualization**  
 By analyzing reviewer behavior beyond just text, we can map out coordinated attacks. This graph network visualization demonstrates how clusters of suspicious accounts often target the same products simultaneously, exposing review farms.
+
+<br>
 <img src="images-recordings/figures/coordinated_review_ring_visualization.png" alt="Coordinated Review Ring" width="75%">
 
 ---
