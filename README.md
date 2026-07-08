@@ -5,6 +5,8 @@
 
 A comprehensive Full-Stack Machine Learning solution to detect suspicious product reviews by analyzing text semantics, behavioral patterns, and metadata. Built for the Data Science Hackathon.
 
+**[🎥 Watch the Full Video Demonstration on YouTube](https://youtu.be/FYomuJQfa0s)**
+
 ---
 
 ## Table of Contents
