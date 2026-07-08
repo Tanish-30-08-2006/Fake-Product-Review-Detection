@@ -218,7 +218,7 @@ This summary plot displays the most impactful features across the dataset. Behav
 A detailed breakdown showing how specific feature values positively or negatively influence the model's probability of flagging a review as fake.
 
 <br>
-<img src="images-recordings/figures/shap_importance_scores.png" alt="SHAP Importance Scores" width="75%">
+<img src="images-recordings/figures/shap_importance_scores.png?v=2" alt="SHAP Importance Scores" width="75%">
 
 <br>
 
