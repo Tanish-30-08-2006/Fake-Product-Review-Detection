@@ -51,7 +51,7 @@ https://github.com/user-attachments/assets/21b475a3-1184-4df8-ad22-8a94940cbbe8
 
 ### 📸 Application Snapshots
 <details>
-<summary><b>Click here to view snapshots of the app (Zoomed)</b></summary>
+<summary><b>Click here to view snapshots of the app</b></summary>
 <br>
 
 **1. Prediction Dashboard**
